@@ -14,4 +14,4 @@ jobs:
     - run: |
         contents=$(cat a)
         git tag "${contents}"
-        git push "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" refs/tags/"${contents}"
+        git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" refs/tags/"${contents}"
