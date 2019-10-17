@@ -13,6 +13,6 @@ jobs:
       if: github.event.pull_request.merged
     - run: git tag hoho
     - uses: ad-m/github-push-action@v.0.4.0
-      branch: hoho
       with:
+        branch: hoho
         github_token: ${{ secrets.GITHUB_TOKEN }}
