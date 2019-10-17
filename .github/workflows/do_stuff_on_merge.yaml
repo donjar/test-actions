@@ -8,10 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v1
       if: github.event.pull_request.merged
-    - run: |
-        git tag hoho
-        git push --tags
+      token: ${{ secrets.GITHUB_TOKEN }}
+    - run: git tag hoho
+    - uses: ad-m/github-push-action@v.0.4.0
+      branch: hoho
