@@ -1,4 +1,4 @@
-name: Do stuff on merge
+name: Tag on push to master
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-      if: github.event.pull_request.merged
     - run: |
         contents=$(cat a)
         git tag "${contents}"
