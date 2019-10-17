@@ -2,7 +2,8 @@ name: Do stuff on merge
 
 on:
   pull_request:
-    types: [closed]
+    types:
+      - closed
 
 jobs:
   build:
@@ -10,6 +11,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+      if: github.event.pull_request.merged
     - run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        git tag hoho
+        git push --tags
