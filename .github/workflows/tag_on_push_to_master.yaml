@@ -10,7 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: |
-        contents=$(cat a)
-        git tag "${contents}"
-        git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" refs/tags/"${contents}"
+    - name: Push tag
+      run: |
+        git diff --exit-code HEAD^ -- a
+        exit_status=$?
+        if [ $exit_status -eq 1 ]; then
+          contents=$(cat a)
+          git tag "${contents}"
+          git push "https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" refs/tags/"${contents}"
+        fi
