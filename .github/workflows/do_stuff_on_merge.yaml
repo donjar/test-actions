@@ -11,8 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       if: github.event.pull_request.merged
-    - run: git tag hoho
-    - uses: ad-m/github-push-action@v.0.4.0
-      with:
-        branch: refs/tags/hoho
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - run: |
+        contents=$(cat a)
+        git tag "${contents}"
+        git push "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" refs/tags/"${contents}"
