@@ -14,5 +14,5 @@ jobs:
     - run: git tag hoho
     - uses: ad-m/github-push-action@v.0.4.0
       with:
-        branch: hoho
+        branch: refs/tags/hoho
         github_token: ${{ secrets.GITHUB_TOKEN }}
