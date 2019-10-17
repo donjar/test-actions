@@ -22,6 +22,5 @@ jobs:
         uses: "pascalgn/automerge-action@v0.4.2"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          LABELS: "!donotmerge,mergeready"
-          AUTOMERGE: keepupdated
+          LABELS: "!donotmerge"
           MERGE_METHOD: squash
